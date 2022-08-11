@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+namespace: docs
+metadata:
+  labels:
+    app: docs
+  name: deploy-docs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docs
+  template:
+    metadata:
+      labels:
+        app: docs
+    spec:
+      containers:
+        - image: mockingio-docs
+          name: app-docs
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.5"
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        kubernetes.io/os: linux
+---
+apiVersion: v1
+namespace: docs
+kind: Service
+metadata:
+  name: docs
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: docs
+  type: LoadBalancer

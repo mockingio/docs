@@ -1,7 +1,6 @@
 ---
 apiVersion: apps/v1
 kind: Deployment
-namespace: docs
 metadata:
   labels:
     app: docs
@@ -33,7 +32,6 @@ spec:
         kubernetes.io/os: linux
 ---
 apiVersion: v1
-namespace: docs
 kind: Service
 metadata:
   name: docs

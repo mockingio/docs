@@ -7,6 +7,7 @@ import (
 )
 
 dagger.#Plan & {
+	client: filesystem: "./build": write: contents: actions.build."build".output
 	actions: {
 		build: {
 			// core.#Source lets you access a file system tree (dagger.#FS)

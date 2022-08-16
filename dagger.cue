@@ -3,11 +3,26 @@ package main
 import (
 	"dagger.io/dagger"
 	"dagger.io/dagger/core"
+
 	"universe.dagger.io/yarn"
+	"universe.dagger.io/docker"
 )
 
 dagger.#Plan & {
-	client: filesystem: "./build": write: contents: actions.build."build".output
+	client: {
+		commands: {
+			"ECR Login": {
+				name: "aws"
+				args: ["ecr", "get-login-password"]
+				stdout: dagger.#Secret
+			}
+		}
+
+		env: {
+			ECR_REGISTRY: string
+		}
+	}
+
 	actions: {
 		build: {
 			// core.#Source lets you access a file system tree (dagger.#FS)
@@ -24,6 +39,27 @@ dagger.#Plan & {
 			build: yarn.#Script & {
 				source: checkoutCode.output
 				name:   "build"
+			}
+		}
+
+		image: docker.#Build & {
+			steps: [
+				docker.#Pull & {
+					source: "nginx:alpine"
+				},
+				docker.#Copy & {
+					contents: build."build".output
+					dest:     "/usr/share/nginx/html"
+				},
+			]
+		}
+
+		push: docker.#Push & {
+			"image": image.output
+			dest:    client.env.ECR_REGISTRY
+			auth: {
+				username: "AWS"
+				secret:   client.commands."ECR Login".stdout
 			}
 		}
 	}

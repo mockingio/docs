@@ -1,0 +1,32 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dagger
+        run: |
+          if ! command -v dagger &> /dev/null
+          then
+            cd /usr/local && curl -L https://dl.dagger.io/dagger/install.sh | sh
+          fi
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy
+        uses: dagger/dagger-for-github@v3
+        with:
+          cmds: |
+            do push

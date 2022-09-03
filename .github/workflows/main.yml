@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 jobs:
   release:
     name: Release
@@ -29,6 +26,8 @@ jobs:
         uses: dagger/dagger-for-github@v3
         env:
           ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
+          AWS_CONFIG: ${{ secrets.AWS_CONFIG }}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
           cmds: |
-            do push
+            do deploy

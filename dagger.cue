@@ -57,16 +57,18 @@ dagger.#Plan & {
 			}
 		}
 
-		ecrImage: docker.#Build & {
+		ecr: docker.#Build & {
 			steps: [
 				docker.#Dockerfile & {
 					source: client.filesystem.".".read.contents
+					platforms: ["linux/arm64"]
+					dockerfile: "Dockerfile"
 				},
 			]
 		}
 
 		push: docker.#Push & {
-			"image": ecrImage.output
+			"image": ecr.output
 			dest:    client.env.ECR_REGISTRY
 			auth: {
 				username: "AWS"

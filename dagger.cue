@@ -61,7 +61,6 @@ dagger.#Plan & {
 			steps: [
 				docker.#Dockerfile & {
 					source: client.filesystem.".".read.contents
-					platforms: ["linux/amd64"]
 				},
 			]
 		}

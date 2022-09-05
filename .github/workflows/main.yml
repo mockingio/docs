@@ -23,6 +23,15 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Build
+        uses: dagger/dagger-for-github@v3
+        env:
+          ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
+          AWS_CONFIG: ${{ secrets.AWS_CONFIG }}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          cmds: |
+            do build --log-level debug --log-format plain
       - name: Deploy
         uses: dagger/dagger-for-github@v3
         env:

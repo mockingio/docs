@@ -62,7 +62,9 @@ dagger.#Plan & {
 				docker.#Dockerfile & {
 					source: client.filesystem.".".read.contents
 					platforms: ["linux/arm64"]
-					dockerfile: "Dockerfile"
+					dockerfile: {
+						path: "Dockerfile"
+					}
 				},
 			]
 		}

@@ -31,4 +31,4 @@ jobs:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
           cmds: |
-            do deploy
+            do deploy --log-level debug --log-format plain

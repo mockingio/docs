@@ -12,6 +12,8 @@ dagger.#Plan & {
 		filesystem: ".": read: {
 			contents: dagger.#FS
 		}
+		filesystem: "build": write: contents: actions.build.output
+
 		commands: {
 			"ECR Login": {
 				name: "aws"
@@ -55,6 +57,8 @@ dagger.#Plan & {
 				source: checkoutCode.output
 				name:   "build"
 			}
+
+			output: build.output
 		}
 
 		ecr: docker.#Build & {

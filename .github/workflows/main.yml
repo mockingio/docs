@@ -50,4 +50,4 @@ jobs:
           context: tuong@mockingio.us-east-1.eksctl.io
       - name: deploy to EKS
         run: |-
-          k apply -k ./.kustomization
+          kubectl apply -k ./.kustomization

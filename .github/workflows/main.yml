@@ -46,5 +46,5 @@ jobs:
           REPOSITORY: infrastructurestack-repo02ac86cf-lboo0qxa3a4c
           IMAGE_TAG: ${{ github.sha }}
         run: |-
-          cd ./kustomization
+          cd ./.kustomization
           kustomize edit set image image=$REGISTRY/$REPOSITORY:$IMAGE_TAG

@@ -47,7 +47,6 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          context: tuong@mockingio.us-east-1.eksctl.io
       - name: deploy to EKS
         run: |-
           kubectl apply -k ./.kustomization

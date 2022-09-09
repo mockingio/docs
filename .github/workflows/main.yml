@@ -38,7 +38,7 @@ jobs:
       - name: Kustomize Set Image
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: infrastructurestack-repo02ac86cf-lboo0qxa3a4c
+          REPOSITORY: ${{ secrets.AWS_ECR_REGISTRY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |-
           cd ./.kustomization

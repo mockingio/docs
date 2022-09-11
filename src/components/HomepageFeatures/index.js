@@ -8,28 +8,27 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Start your server instantly using static binary
+        file or Docker image. No need to install any dependencies.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Easy to configure',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Configure your mock server using simple YAML file. No need to write any code. Tones of
+        options to customise your server.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '100% free and open source',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Mocking.io is 100% free and open source. More features are coming soon.
       </>
     ),
   },

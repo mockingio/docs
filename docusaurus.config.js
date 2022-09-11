@@ -47,10 +47,6 @@ const config = {
     ({
       navbar: {
         title: 'mocking.io',
-        logo: {
-          alt: 'mocking.io logo',
-          src: 'img/logo.svg',
-        },
       },
       footer: {
         style: 'dark',
@@ -69,6 +65,10 @@ const config = {
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/mockingio',
+              },
+              {
+                label: 'Github',
+                href: 'https://github.com/mockingio/mockingio',
               },
             ],
           },

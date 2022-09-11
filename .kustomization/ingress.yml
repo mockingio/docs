@@ -14,11 +14,11 @@ spec:
   rules:
     - http:
         paths:
-          - path: /*
-            pathType: Prefix
-            backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+          # - path: /*
+          #   pathType: Prefix
+          #   backend:
+          #     serviceName: ssl-redirect
+          #     servicePort: use-annotation
           - path: /*
             pathType: Prefix
             backend:

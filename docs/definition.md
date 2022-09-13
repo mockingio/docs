@@ -1,11 +1,12 @@
 ---
-sidebar_position: 50
+sidebar_position: 25
 ---
 
 # Mock definition
 
 ```yaml
 name: Full YAML definition
+port: 3000
 proxy: # Proxy setup
   enabled: true
   host: https://proxy.to.this.com # No matched requests will be forewarded to

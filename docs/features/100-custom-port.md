@@ -16,7 +16,7 @@ routes:
 
 ```bash
 mockingio start --filename example.yaml
-# {"admin_url":"0.0.0.0:2601","urls":["http://127.0.0.1:3000"]}
+# {"urls":["http://127.0.0.1:3000"]}
 # The server is listening at http://127.0.0.1:3000
 ```
 

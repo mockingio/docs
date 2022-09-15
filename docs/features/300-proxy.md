@@ -6,7 +6,7 @@ sidebar_position: 20
  If no routes match the request, the request will be forwarded to the endpoint specified in the proxy setup.
 
 ```yaml title="proxy.yaml"
-name: Example of mock server with custom port
+name: Example of mock server with proxy
 port: 3000
 proxy:
   enabled: true

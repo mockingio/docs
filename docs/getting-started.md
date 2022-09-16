@@ -62,3 +62,9 @@ This will start a mock server, listing at port :8080.
 curl 127.0.0.1:8080
 # Greeting from mocking.io!
 ```
+
+To start with multiple mock servers
+
+```bash
+mockingio start --filename mock1.yml --filename mock2.yml
+```

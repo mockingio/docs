@@ -39,7 +39,7 @@ go build .
 
 ### Create a simple mock file
 
-```yaml
+```yaml title="hello.yaml"
 # file: mock.yml
 name: Hello World
 port: 8080

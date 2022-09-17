@@ -4,6 +4,33 @@ sidebar_position: 40
 
 # Fake data
 
+Fake data can be used to generate random useful data for your API responses. Fake data can be injected into response header or body. For example:
+
+```yaml title="fakedata.yaml"
+name: "Example of mock server with fake data"
+port: 3000
+routes:
+  -
+    path: /hello
+    responses:
+      -
+        body: "Hello {{faker.person.name}}"
+        headers:
+          Agent: "{{faker.useragent.useragent}}"
+          Content-Type: application/json
+```
+
+```bash
+http GET localhost:3000/hello
+
+# HTTP/1.1 200 OK
+# Agent: Mozilla/5.0 (X11; U; Linux i686; en-GB; rv:1.9.1.15) Gecko/20101027 Fedora/3.5.15-1.# # fc12 Firefox/3.5.15
+# Content-Length: 20
+# Content-Type: application/json
+# Date: Sat, 17 Sep 2022 23:17:00 GMT
+
+# Hello Vernon Douglas
+```
 
 ## Supported fake data options
 

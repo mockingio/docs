@@ -4,7 +4,7 @@ sidebar_position: 900
 
 # Using the Go package
 
-Go package: github.com/mockingio/mockingio/pkg/mock
+Go package: `github.com/mockingio/mockingio/pkg/mock`
 
 If your application is written in Go, you can take the benefit of using the Go package to create your mock server. For example:
 

@@ -11,11 +11,17 @@ routes:
     - path: /hello
       responses:
         - body: "Hello World"
-          delay: 3000 # 3 seconds
+          delay: 
+            min: 500 # milliseconds
+            max: 2000 # milliseconds
 ```
 
 ```curl
-time curl http://127.0.0.1:50692/hello
+time curl http://127.0.0.1:3000/hello
 # Hello World
-# curl http://127.0.0.1:50692/hello  0.00s user 0.01s system 0% cpu 3.017 total
+# curl http://127.0.0.1:3000/hello  0.00s user 0.00s system 1% cpu 0.578 total
+
+time curl http://127.0.0.1:3000/hello
+# Hello World
+# curl http://127.0.0.1:3000/hello  0.00s user 0.01s system 0% cpu 1.958 total
 ```

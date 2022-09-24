@@ -12,7 +12,8 @@ metadata:
     kubernetes.io/ingress.class: alb
 spec:
   rules:
-    - http:
+    - host: docs.mocking.io
+      http:
         paths:
           - path: /*
             pathType: ImplementationSpecific
